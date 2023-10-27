@@ -1,20 +1,38 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {NativeRouter, Routes, Route} from 'react-router-native';
 import Home from './pages/Home';
 import Dream from './pages/Dream';
 import Nightmare from './pages/Nightmare';
-import {getDBConnection, createTable} from './data/db-service';
+import {
+  getDBConnection,
+  createDreams,
+  insertDream,
+  getDreams,
+} from './data/db-service';
 
 function App() {
-  React.useEffect(() => {
+  useEffect(() => {
     getDBConnection()
-      .then(createTable)
+      .then(cnx => createDreams(cnx))
+      .catch(error => {
+        console.log(error);
+      });
+
+    getDBConnection()
+      .then(cnx => insertDream(cnx, 'Mon premier rêve', 'Test'))
+      .catch(error => {
+        console.log(error);
+      });
+
+    getDBConnection()
+      .then(cnx => getDreams(cnx))
+      .then(dreams => {
+        console.log(dreams);
+      })
       .catch(error => {
         console.log(error);
       });
   }, []);
-
-  console.log('App rendered');
 
   return (
     <NativeRouter>
