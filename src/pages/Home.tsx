@@ -3,7 +3,6 @@ import {View} from 'react-native';
 import {ImageBackground, StyleSheet} from 'react-native';
 import Header from '../components/Header';
 import Actions from '../components/Actions';
-import SQLite from 'react-native-sqlite-storage';
 
 function Home() {
   return (
