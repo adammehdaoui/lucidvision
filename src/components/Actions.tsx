@@ -1,36 +1,42 @@
 import React from 'react';
-import {View, Button, Alert, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
+import {Routes, Route, Link} from 'react-router-native';
+import Dream from '../pages/Dream';
+import Nightmare from '../pages/Nightmare';
 
 function Actions() {
   return (
     <View>
-      <TouchableOpacity style={styles.actionButton}>
-        <Button
-          title="Ajouter un rêve"
-          onPress={() => Alert.alert("Ajout d'un rêve")}
-          color="black"
-        />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.actionButton}>
-        <Button
-          title="Ajouter un cauchemar"
-          onPress={() => Alert.alert("Ajout d'un cauchemar")}
-          color="black"
-        />
-      </TouchableOpacity>
+      <Routes>
+        <Route path="/dream" Component={Dream} />
+        <Route path="/nightmare" Component={Nightmare} />
+      </Routes>
+
+      <Link to="/dream" style={styles.actionButton}>
+        <Text style={styles.actionText}>Ajout d'un rêve</Text>
+      </Link>
+
+      <Link to="/nightmare" style={styles.actionButton}>
+        <Text style={styles.actionText}>Ajout d'un cauchemar</Text>
+      </Link>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   actionButton: {
-    backgroundColor: 'white',
+    backgroundColor: '#ebf2ff',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: 'black',
-    width: '55%',
-    marginLeft: '20%',
+    borderColor: 'gray',
+    width: '65%',
+    marginLeft: '18%',
     marginBottom: '5%',
+    padding: 20,
+  },
+  actionText: {
+    fontSize: 18,
+    textAlign: 'center',
   },
 });
 
