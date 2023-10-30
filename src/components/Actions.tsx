@@ -1,23 +1,24 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {Routes, Route, Link} from 'react-router-native';
-import Dream from '../pages/Dream';
-import Nightmare from '../pages/Nightmare';
+import {Link} from 'react-router-native';
 
 function Actions() {
   return (
     <View>
-      <Routes>
-        <Route path="/dream" Component={Dream} />
-        <Route path="/nightmare" Component={Nightmare} />
-      </Routes>
-
       <Link to="/dream" style={styles.actionButton}>
         <Text style={styles.actionText}>Ajout d'un rêve</Text>
       </Link>
 
       <Link to="/nightmare" style={styles.actionButton}>
         <Text style={styles.actionText}>Ajout d'un cauchemar</Text>
+      </Link>
+
+      <Link to="/dreams" style={styles.actionButton}>
+        <Text style={styles.actionText}>Mes rêves</Text>
+      </Link>
+
+      <Link to="/nightmares" style={styles.actionButton}>
+        <Text style={styles.actionText}>Mes cauchemars</Text>
       </Link>
     </View>
   );
