@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {Link} from 'react-router-native';
+import {View, ScrollView, Text, StyleSheet, ImageBackground} from 'react-native';
 import {getDBConnection, getDreams} from '../data/db-service';
 import Dream from '../interfaces/Dream';
 
@@ -15,29 +14,44 @@ function MyDreams() {
   }, []);
 
   return (
-    <View style={styles.homeView}>
-      <Link to="/">
-        <Text style={styles.homeText}>MyDreams</Text>
-      </Link>
-
-      {dreams.map((dream: Dream) => (
-        <View>
-          <Text>Titre : {dream.TITLE}</Text>
-          <Text>Description : {dream.DESC}</Text>
+    <ImageBackground
+      style={styles.backgroundImage}
+      source={require('../assets/gradient.jpeg')}>
+      <ScrollView>
+        <View style={styles.mainView}>
+          {dreams.map((dream: Dream) => (
+            <View key={dream.ID} style={styles.dreamView}>
+              <Text>Titre : {dream.TITLE}</Text>
+              <Text>Description : {dream.DESC}</Text>
+            </View>
+          ))}
         </View>
-      ))}
-    </View>
+      </ScrollView>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  homeView: {
-    flex: 1,
+  mainView: {
+    padding: 30,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  homeText: {
-    fontSize: 20,
+  dreamView: {
+    padding: 20,
+    marginTop: 20,
+    backgroundColor: '#ebf2ff',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
+  },
+  textView: {
+    fontSize: 18,
+    textAlign: 'center',
+  },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'stretch',
   },
 });
 
