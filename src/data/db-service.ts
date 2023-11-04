@@ -10,7 +10,6 @@ export const getDBConnection = async () => {
   return openDatabase({
     name: 'app_db.db',
     location: 'Library',
-    createFromLocation: './app_db.db',
   });
 };
 
