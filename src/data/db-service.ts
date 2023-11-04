@@ -10,7 +10,7 @@ export const getDBConnection = async () => {
   return openDatabase({
     name: 'app_db.db',
     location: 'Library',
-    createFromLocation: '~/src/data/app_db.db',
+    createFromLocation: './app_db.db',
   });
 };
 
@@ -18,6 +18,7 @@ export const createDreams = async (db: SQLiteDatabase) => {
   const query = `CREATE TABLE IF NOT EXISTS "DREAMS" (
     "ID"	INTEGER NOT NULL,
     "TITLE"	TEXT,
+    "DATE" DATE DEFAULT CURRENT_DATE,
     "DESC"	TEXT,
     PRIMARY KEY("ID" AUTOINCREMENT)
   );`;

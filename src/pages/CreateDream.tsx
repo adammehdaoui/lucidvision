@@ -75,7 +75,8 @@ const styles = StyleSheet.create({
   },
   descView: {
     fontSize: 18,
-    padding: 100,
+    textAlign: 'center',
+    padding: 75,
     marginTop: 20,
     backgroundColor: '#ebf2ff',
     borderRadius: 10,
