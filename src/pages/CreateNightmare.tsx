@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {Link} from 'react-router-native';
 
-function Nightmare() {
+function CreateNightmare() {
   return (
     <View style={styles.homeView}>
       <Link to="/">
@@ -23,4 +23,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Nightmare;
+export default CreateNightmare;

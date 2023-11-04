@@ -1,5 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {View, ScrollView, Text, StyleSheet, ImageBackground} from 'react-native';
+import {
+  View,
+  ScrollView,
+  Text,
+  StyleSheet,
+  ImageBackground,
+} from 'react-native';
 import {getDBConnection, getDreams} from '../data/db-service';
 import Dream from '../interfaces/Dream';
 
