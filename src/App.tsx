@@ -18,7 +18,7 @@ function App() {
       <Routes>
         <Route path="*" Component={Home} />
         <Route path="/dream" Component={CreateDream} />
-        <Route path="/nightmare" Component={CreateNightmare} />
+        <Route path="/nightmares" Component={CreateNightmare} />
         <Route path="/dreams" Component={MyDreams} />
       </Routes>
     </NativeRouter>

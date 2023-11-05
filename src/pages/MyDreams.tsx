@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import {getDBConnection, getDreams} from '../data/db-service';
 import Dream from '../interfaces/Dream';
+import Menu from './Menu';
 
 function MyDreams() {
   const [dreams, setDreams] = useState<Dream[]>([]);
@@ -23,21 +24,27 @@ function MyDreams() {
     <ImageBackground
       style={styles.backgroundImage}
       source={require('../assets/gradient.jpeg')}>
-      <ScrollView>
-        <View style={styles.mainView}>
-          {dreams.map((dream: Dream) => (
-            <View key={dream.ID} style={styles.dreamView}>
-              <Text>Titre : {dream.TITLE}</Text>
-              <Text>Description : {dream.DESC}</Text>
-            </View>
-          ))}
-        </View>
-      </ScrollView>
+      <View>
+        <ScrollView>
+          <View style={styles.mainView}>
+            {dreams.map((dream: Dream) => (
+              <View key={dream.ID} style={styles.dreamView}>
+                <Text>Titre : {dream.TITLE}</Text>
+                <Text>Description : {dream.DESC}</Text>
+              </View>
+            ))}
+          </View>
+          <Menu />
+        </ScrollView>
+      </View>
     </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   mainView: {
     padding: 30,
     justifyContent: 'center',
