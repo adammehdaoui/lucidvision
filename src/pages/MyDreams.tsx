@@ -24,6 +24,7 @@ function MyDreams() {
     <ImageBackground
       style={styles.backgroundImage}
       source={require('../assets/gradient.jpeg')}>
+      <Menu />
       <View>
         <ScrollView>
           <View style={styles.mainView}>
@@ -34,7 +35,6 @@ function MyDreams() {
               </View>
             ))}
           </View>
-          <Menu />
         </ScrollView>
       </View>
     </ImageBackground>
