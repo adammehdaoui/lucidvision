@@ -9,6 +9,7 @@ function Trash() {
 const styles = StyleSheet.create({
   placement: {
     marginTop: 20,
+    marginLeft: 45,
   },
 });
 

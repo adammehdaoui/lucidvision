@@ -60,10 +60,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'gray',
   },
-  svgPlacement: {
-    justifyContent: 'center',
-    textAlign: 'center',
-  },
   textView: {
     fontSize: 18,
     textAlign: 'center',
