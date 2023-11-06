@@ -8,7 +8,7 @@ import {
   Text,
 } from 'react-native';
 import {Link} from 'react-router-native';
-import {getDBConnection, insertDream, getDreams} from '../data/db-service';
+import {getDBConnection, insertDream} from '../data/db-service';
 import Menu from '../components/Menu';
 
 function CreateDream() {
@@ -18,11 +18,6 @@ function CreateDream() {
   function handleAdd() {
     getDBConnection()
       .then(cnx => insertDream(cnx, title, description))
-      .catch(e => console.log(e));
-
-    getDBConnection()
-      .then(cnx => getDreams(cnx))
-      .then(dreamsFromDB => console.log(dreamsFromDB))
       .catch(e => console.log(e));
   }
 

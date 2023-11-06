@@ -7,8 +7,9 @@ import {
   ImageBackground,
 } from 'react-native';
 import {getDBConnection, getDreams} from '../data/db-service';
-import Dream from '../interfaces/Dream';
+import Dream from '../custom/Dream';
 import Menu from '../components/Menu';
+import Trash from '../components/Trash';
 
 function MyDreams() {
   const [dreams, setDreams] = useState<Dream[]>([]);
@@ -32,6 +33,7 @@ function MyDreams() {
               <View key={dream.ID} style={styles.dreamView}>
                 <Text>Titre : {dream.TITLE}</Text>
                 <Text>Description : {dream.DESC}</Text>
+                <Trash />
               </View>
             ))}
           </View>
@@ -57,6 +59,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: 'gray',
+  },
+  svgPlacement: {
+    justifyContent: 'center',
+    textAlign: 'center',
   },
   textView: {
     fontSize: 18,
