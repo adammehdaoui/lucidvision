@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {Link} from 'react-router-native';
 import {getDBConnection, insertDream, getDreams} from '../data/db-service';
+import Menu from '../components/Menu';
 
 function CreateDream() {
   const [title, setTitle] = useState<string>('');
@@ -29,6 +30,7 @@ function CreateDream() {
     <ImageBackground
       style={styles.backgroundImage}
       source={require('../assets/gradient.jpeg')}>
+      <Menu />
       <SafeAreaView style={styles.mainView}>
         <TextInput
           enablesReturnKeyAutomatically
@@ -58,7 +60,6 @@ function CreateDream() {
 
 const styles = StyleSheet.create({
   mainView: {
-    padding: 30,
     justifyContent: 'center',
     alignItems: 'center',
   },
