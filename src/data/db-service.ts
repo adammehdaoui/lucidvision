@@ -13,14 +13,20 @@ export const getDBConnection = async () => {
   });
 };
 
-export const createDreams = async (db: SQLiteDatabase) => {
+export const initiateDB = async (db: SQLiteDatabase) => {
   const query = `CREATE TABLE IF NOT EXISTS "DREAMS" (
     "ID"	INTEGER NOT NULL,
     "TITLE"	TEXT,
     "DATE" DATE DEFAULT CURRENT_DATE,
     "DESC"	TEXT,
     PRIMARY KEY("ID" AUTOINCREMENT)
-  );`;
+  );
+  CREATE TABLE IF NOT EXISTS "NIGHTMARES" (
+    "ID"	INTEGER NOT NULL,
+    "TITLE"	TEXT,
+    "DATE" DATE DEFAULT CURRENT_DATE,
+    "DESC"	TEXT,
+    PRIMARY KEY("ID" AUTOINCREMENT)`;
 
   await db.executeSql(query);
 };

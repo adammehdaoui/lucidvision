@@ -4,12 +4,12 @@ import Home from './pages/Home';
 import CreateDream from './pages/CreateDream';
 import CreateNightmare from './pages/CreateNightmare';
 import MyDreams from './pages/MyDreams';
-import {getDBConnection, createDreams} from './data/db-service';
+import {getDBConnection, initiateDB} from './data/db-service';
 
 function App() {
   useEffect(() => {
     getDBConnection()
-      .then(cnx => createDreams(cnx))
+      .then(cnx => initiateDB(cnx))
       .catch(e => console.log(e));
   }, []);
 
