@@ -35,6 +35,14 @@ export const insertDream = async (
   await db.executeSql(query, [title, desc]);
 };
 
+export const deleteDream = async (db: SQLiteDatabase, id: number) => {
+  const query = `DELETE FROM DREAMS WHERE ID = ${id}`;
+
+  console.log(query);
+
+  await db.executeSql(query, [id]);
+};
+
 export const getDreams = async (db: SQLiteDatabase) => {
   const query = 'SELECT * FROM DREAMS';
 

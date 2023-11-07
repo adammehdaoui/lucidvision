@@ -5,8 +5,9 @@ import {
   Text,
   StyleSheet,
   ImageBackground,
+  TouchableOpacity,
 } from 'react-native';
-import {getDBConnection, getDreams} from '../data/db-service';
+import {getDBConnection, getDreams, deleteDream} from '../data/db-service';
 import Dream from '../custom/Dream';
 import Menu from '../components/Menu';
 import Trash from '../components/Trash';
@@ -14,12 +15,24 @@ import Trash from '../components/Trash';
 function MyDreams() {
   const [dreams, setDreams] = useState<Dream[]>([]);
 
-  useEffect(() => {
+  function updateDreams() {
     getDBConnection()
       .then(cnx => getDreams(cnx))
       .then(dreamsFromDB => setDreams(dreamsFromDB))
       .catch(e => console.log(e));
+  }
+
+  useEffect(() => {
+    updateDreams();
   }, []);
+
+  function handleDelete(id: number) {
+    getDBConnection()
+      .then(cnx => deleteDream(cnx, id))
+      .catch(e => console.log(e));
+
+    updateDreams();
+  }
 
   return (
     <ImageBackground
@@ -27,17 +40,27 @@ function MyDreams() {
       source={require('../assets/gradient.jpeg')}>
       <Menu />
       <View>
-        <ScrollView>
-          <View style={styles.mainView}>
-            {dreams.map((dream: Dream) => (
-              <View key={dream.ID} style={styles.dreamView}>
-                <Text>Titre : {dream.TITLE}</Text>
-                <Text>Description : {dream.DESC}</Text>
-                <Trash />
-              </View>
-            ))}
+        {dreams.length === 0 ? (
+          <View style={styles.noDreamView}>
+            <Text style={styles.noDreamText}>
+              Vous n'avez enregistré aucun rêve.
+            </Text>
           </View>
-        </ScrollView>
+        ) : (
+          <ScrollView>
+            <View style={styles.mainView}>
+              {dreams.map((dream: Dream) => (
+                <View key={dream.ID} style={styles.dreamView}>
+                  <Text>Titre : {dream.TITLE}</Text>
+                  <Text>Description : {dream.DESC}</Text>
+                  <TouchableOpacity onPress={() => handleDelete(dream.ID)}>
+                    <Trash />
+                  </TouchableOpacity>
+                </View>
+              ))}
+            </View>
+          </ScrollView>
+        )}
       </View>
     </ImageBackground>
   );
@@ -49,6 +72,20 @@ const styles = StyleSheet.create({
   },
   mainView: {
     padding: 30,
+  },
+  noDreamView: {
+    padding: 10,
+    marginTop: 40,
+    marginLeft: '15%',
+    width: '75%',
+    backgroundColor: '#ebf2ff',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
+  },
+  noDreamText: {
+    justifyContent: 'center',
+    textAlign: 'center',
   },
   dreamView: {
     padding: 10,
