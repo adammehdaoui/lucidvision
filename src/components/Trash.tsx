@@ -8,8 +8,8 @@ function Trash() {
 
 const styles = StyleSheet.create({
   placement: {
-    marginTop: 20,
-    marginLeft: 45,
+    marginTop: 10,
+    marginLeft: '40%',
   },
 });
 

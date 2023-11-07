@@ -49,11 +49,9 @@ const styles = StyleSheet.create({
   },
   mainView: {
     padding: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   dreamView: {
-    padding: 20,
+    padding: 10,
     marginTop: 20,
     backgroundColor: '#ebf2ff',
     borderRadius: 10,
