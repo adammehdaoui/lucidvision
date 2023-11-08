@@ -13,7 +13,7 @@ import Dream from '../custom/Dream';
 import Menu from '../components/Menu';
 import Trash from '../components/Trash';
 
-function MyDreams() {
+function MyDreams({navigation}) {
   const [dreams, setDreams] = useState<Dream[]>([]);
   const {isNightmare} = useParams();
   const nightmare = isNightmare === '0' ? false : true;

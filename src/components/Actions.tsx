@@ -1,23 +1,31 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {Link} from 'react-router-native';
+import {Link} from '@react-navigation/native';
 
 function Actions() {
   return (
     <View>
-      <Link to="/dream/0" style={styles.actionButton}>
+      <Link
+        to={{screen: 'Dream', params: {isNightmare: false}}}
+        style={styles.actionButton}>
         <Text style={styles.actionText}>Ajout d'un rêve</Text>
       </Link>
 
-      <Link to="/dream/1" style={styles.actionButton}>
+      <Link
+        to={{screen: 'Dream', params: {isNightmare: true}}}
+        style={styles.actionButton}>
         <Text style={styles.actionText}>Ajout d'un cauchemar</Text>
       </Link>
 
-      <Link to="/dreams/0" style={styles.actionButton}>
+      <Link
+        to={{screen: 'Dreams', params: {isNightmare: false}}}
+        style={styles.actionButton}>
         <Text style={styles.actionText}>Mes rêves</Text>
       </Link>
 
-      <Link to="/dreams/1" style={styles.actionButton}>
+      <Link
+        to={{screen: 'Dreams', params: {isNightmare: true}}}
+        style={styles.actionButton}>
         <Text style={styles.actionText}>Mes cauchemars</Text>
       </Link>
     </View>

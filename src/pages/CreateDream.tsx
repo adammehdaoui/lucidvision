@@ -7,26 +7,20 @@ import {
   TouchableOpacity,
   Text,
 } from 'react-native';
-import {useParams, useNavigate} from 'react-router-native';
 import {getDBConnection, insertDream} from '../data/db-service';
 import Menu from '../components/Menu';
 
-function CreateDream() {
+function CreateDream({route, navigation}: any) {
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
-  const {isNightmare} = useParams();
-  const nightmare = isNightmare === '0' ? false : true;
-
-  const navigate = useNavigate();
+  const {nightmare} = route.params;
 
   function handleAdd() {
-    const listRoot = `/dreams/${isNightmare}`;
-
     getDBConnection()
       .then(cnx => insertDream(cnx, title, description, nightmare))
       .catch(e => console.log(e));
 
-    navigate(listRoot);
+    navigation.navigate('Dreams', {isNightmare: nightmare});
   }
 
   return (
