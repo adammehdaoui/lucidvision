@@ -58,6 +58,7 @@ function MyDreams() {
               {dreams.map((dream: Dream) => (
                 <View key={dream.ID} style={styles.dreamView}>
                   <Text>Type : {dream.ISNIGHTMARE ? 'Cauchemar' : 'Rêve'}</Text>
+                  <Text>Date : {dream.CREATIONDATE}</Text>
                   <Text>Titre : {dream.TITLE}</Text>
                   <Text>Description : {dream.DESC}</Text>
                   <TouchableOpacity onPress={() => handleDelete(dream.ID)}>

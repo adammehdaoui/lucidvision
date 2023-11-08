@@ -2,7 +2,7 @@ interface Dream {
   ID: number;
   TITLE: string;
   DESC: string;
-  DATE: Date;
+  CREATIONDATE: string;
   ISNIGHTMARE: boolean;
 }
 
