@@ -19,14 +19,9 @@ export const initiateDB = async (db: SQLiteDatabase) => {
     "TITLE"	TEXT,
     "DATE" DATE DEFAULT CURRENT_DATE,
     "DESC"	TEXT,
+    "ISNIGHTMARE" BOOLEAN DEFAULT 0,
     PRIMARY KEY("ID" AUTOINCREMENT)
-  );
-  CREATE TABLE IF NOT EXISTS "NIGHTMARES" (
-    "ID"	INTEGER NOT NULL,
-    "TITLE"	TEXT,
-    "DATE" DATE DEFAULT CURRENT_DATE,
-    "DESC"	TEXT,
-    PRIMARY KEY("ID" AUTOINCREMENT)`;
+  );`;
 
   await db.executeSql(query);
 };
@@ -50,7 +45,7 @@ export const deleteDream = async (db: SQLiteDatabase, id: number) => {
 };
 
 export const getDreams = async (db: SQLiteDatabase) => {
-  const query = 'SELECT * FROM DREAMS';
+  const query = 'SELECT * FROM DREAMS WHERE ISNIGHTMARE = 0';
 
   const [results] = await db.executeSql(query);
 
