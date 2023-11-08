@@ -5,19 +5,19 @@ import {Link} from 'react-router-native';
 function Actions() {
   return (
     <View>
-      <Link to="/dream" style={styles.actionButton}>
+      <Link to="/dream/0" style={styles.actionButton}>
         <Text style={styles.actionText}>Ajout d'un rêve</Text>
       </Link>
 
-      <Link to="/nightmare" style={styles.actionButton}>
+      <Link to="/dream/1" style={styles.actionButton}>
         <Text style={styles.actionText}>Ajout d'un cauchemar</Text>
       </Link>
 
-      <Link to="/dreams" style={styles.actionButton}>
+      <Link to="/dreams/0" style={styles.actionButton}>
         <Text style={styles.actionText}>Mes rêves</Text>
       </Link>
 
-      <Link to="/nightmares" style={styles.actionButton}>
+      <Link to="/dreams/1" style={styles.actionButton}>
         <Text style={styles.actionText}>Mes cauchemars</Text>
       </Link>
     </View>

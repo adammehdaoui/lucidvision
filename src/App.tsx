@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import {NativeRouter, Routes, Route} from 'react-router-native';
 import Home from './pages/Home';
 import CreateDream from './pages/CreateDream';
-import CreateNightmare from './pages/CreateNightmare';
 import MyDreams from './pages/MyDreams';
 import {getDBConnection, initiateDB} from './data/db-service';
 
@@ -17,9 +16,8 @@ function App() {
     <NativeRouter>
       <Routes>
         <Route path="*" Component={Home} />
-        <Route path="/dream" Component={CreateDream} />
-        <Route path="/nightmare" Component={CreateNightmare} />
-        <Route path="/dreams" Component={MyDreams} />
+        <Route path="/dream/:isNightmare" Component={CreateDream} />
+        <Route path="/dreams/:isNightmare" Component={MyDreams} />
       </Routes>
     </NativeRouter>
   );

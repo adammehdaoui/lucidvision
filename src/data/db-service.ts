@@ -14,13 +14,13 @@ export const getDBConnection = async () => {
 };
 
 export const initiateDB = async (db: SQLiteDatabase) => {
-  const query = `CREATE TABLE IF NOT EXISTS "DREAMS" (
-    "ID"	INTEGER NOT NULL,
-    "TITLE"	TEXT,
-    "DATE" DATE DEFAULT CURRENT_DATE,
-    "DESC"	TEXT,
-    "ISNIGHTMARE" BOOLEAN DEFAULT 0,
-    PRIMARY KEY("ID" AUTOINCREMENT)
+  const query = `CREATE TABLE IF NOT EXISTS DREAMS (
+    ID	INTEGER NOT NULL,
+    TITLE	TEXT,
+    DATE DATE DEFAULT CURRENT_DATE,
+    DESC	TEXT,
+    ISNIGHTMARE BOOLEAN DEFAULT 0,
+    PRIMARY KEY(ID AUTOINCREMENT)
   );`;
 
   await db.executeSql(query);
@@ -30,10 +30,11 @@ export const insertDream = async (
   db: SQLiteDatabase,
   title: string,
   desc: string,
+  isNightmare: boolean,
 ) => {
-  const query = `INSERT INTO DREAMS (TITLE, DESC) VALUES ('${title}', '${desc}')`;
+  const query = `INSERT INTO DREAMS (TITLE, DESC, ISNIGHTMARE) VALUES ('${title}', '${desc}', ${isNightmare})`;
 
-  await db.executeSql(query, [title, desc]);
+  await db.executeSql(query, [title, desc, isNightmare]);
 };
 
 export const deleteDream = async (db: SQLiteDatabase, id: number) => {

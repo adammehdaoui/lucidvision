@@ -7,17 +7,20 @@ import {
   TouchableOpacity,
   Text,
 } from 'react-native';
-import {Link} from 'react-router-native';
+import {Link, useParams} from 'react-router-native';
 import {getDBConnection, insertDream} from '../data/db-service';
 import Menu from '../components/Menu';
 
 function CreateDream() {
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
+  const {isNightmare} = useParams();
+
+  console.log(isNightmare);
 
   function handleAdd() {
     getDBConnection()
-      .then(cnx => insertDream(cnx, title, description))
+      .then(cnx => insertDream(cnx, title, description, false))
       .catch(e => console.log(e));
   }
 
