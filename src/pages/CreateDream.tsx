@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Text,
 } from 'react-native';
-import {Link, useParams} from 'react-router-native';
+import {useParams, useNavigate} from 'react-router-native';
 import {getDBConnection, insertDream} from '../data/db-service';
 import Menu from '../components/Menu';
 
@@ -15,13 +15,18 @@ function CreateDream() {
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const {isNightmare} = useParams();
+  const nightmare = isNightmare === '0' ? false : true;
 
-  console.log(isNightmare);
+  const navigate = useNavigate();
 
   function handleAdd() {
+    const listRoot = `/dreams/${isNightmare}`;
+
     getDBConnection()
-      .then(cnx => insertDream(cnx, title, description, false))
+      .then(cnx => insertDream(cnx, title, description, nightmare))
       .catch(e => console.log(e));
+
+    navigate(listRoot);
   }
 
   return (
@@ -46,11 +51,9 @@ function CreateDream() {
           placeholder="Description"
           style={styles.descView}
         />
-        <Link to="/dreams">
-          <TouchableOpacity style={styles.button} onPress={handleAdd}>
-            <Text style={styles.buttonText}>Ajouter</Text>
-          </TouchableOpacity>
-        </Link>
+        <TouchableOpacity style={styles.button} onPress={handleAdd}>
+          <Text style={styles.buttonText}>Ajouter</Text>
+        </TouchableOpacity>
       </SafeAreaView>
     </ImageBackground>
   );

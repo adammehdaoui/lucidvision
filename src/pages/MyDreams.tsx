@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {
   View,
   ScrollView,
@@ -7,6 +7,7 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
+import {useParams} from 'react-router-native';
 import {getDBConnection, getDreams, deleteDream} from '../data/db-service';
 import Dream from '../custom/Dream';
 import Menu from '../components/Menu';
@@ -14,17 +15,22 @@ import Trash from '../components/Trash';
 
 function MyDreams() {
   const [dreams, setDreams] = useState<Dream[]>([]);
+  const {isNightmare} = useParams();
+  const nightmare = isNightmare === '0' ? false : true;
 
-  function updateDreams() {
-    getDBConnection()
-      .then(cnx => getDreams(cnx))
-      .then(dreamsFromDB => setDreams(dreamsFromDB))
-      .catch(e => console.log(e));
-  }
+  const updateDreams = useCallback(
+    function () {
+      getDBConnection()
+        .then(cnx => getDreams(cnx, nightmare))
+        .then(dreamsFromDB => setDreams(dreamsFromDB))
+        .catch(e => console.log(e));
+    },
+    [nightmare],
+  );
 
   useEffect(() => {
     updateDreams();
-  }, []);
+  }, [updateDreams]);
 
   function handleDelete(id: number) {
     getDBConnection()
@@ -51,6 +57,7 @@ function MyDreams() {
             <View style={styles.mainView}>
               {dreams.map((dream: Dream) => (
                 <View key={dream.ID} style={styles.dreamView}>
+                  <Text>Type : {dream.ISNIGHTMARE ? 'Cauchemar' : 'Rêve'}</Text>
                   <Text>Titre : {dream.TITLE}</Text>
                   <Text>Description : {dream.DESC}</Text>
                   <TouchableOpacity onPress={() => handleDelete(dream.ID)}>

@@ -45,8 +45,8 @@ export const deleteDream = async (db: SQLiteDatabase, id: number) => {
   await db.executeSql(query, [id]);
 };
 
-export const getDreams = async (db: SQLiteDatabase) => {
-  const query = 'SELECT * FROM DREAMS WHERE ISNIGHTMARE = 0';
+export const getDreams = async (db: SQLiteDatabase, isNightmare: boolean) => {
+  const query = `SELECT * FROM DREAMS WHERE ISNIGHTMARE = ${isNightmare}`;
 
   const [results] = await db.executeSql(query);
 
