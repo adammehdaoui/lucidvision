@@ -11,20 +11,14 @@ import {getDBConnection, getDreams, deleteDream} from '../data/db-service';
 import Dream from '../custom/Dream';
 import Menu from '../components/Menu';
 import Trash from '../components/Trash';
-import {StackNavigationProp} from '@react-navigation/stack';
-import RootStackParamList from '../custom/types';
-import {RouteProp} from '@react-navigation/native';
 
-interface MyDreamsProps {
-  navigation: StackNavigationProp<RootStackParamList>; // Update with your actual types
-  route: RouteProp<RootStackParamList, 'Dreams'>; // Update with your actual types
-}
-
-const MyDreams: React.FC<MyDreamsProps> = ({navigation, route}) => {
+function MyDreams() {
   const [dreams, setDreams] = useState<Dream[]>([]);
   // const {isNightmare} = useParams();
   // const nightmare = isNightmare === '0' ? false : true;
-  const {nightmare} = route.params;
+  // const {nightmare} = route.params;
+
+  const nightmare = false;
 
   const updateDreams = useCallback(
     function () {
@@ -80,7 +74,7 @@ const MyDreams: React.FC<MyDreamsProps> = ({navigation, route}) => {
       </View>
     </ImageBackground>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {

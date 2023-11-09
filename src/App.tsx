@@ -6,9 +6,9 @@ import CreateDream from './pages/CreateDream';
 import MyDreams from './pages/MyDreams';
 import {getDBConnection, initiateDB} from './data/db-service';
 
-const Stack = createNativeStackNavigator();
-
 function App() {
+  const Stack = createNativeStackNavigator();
+
   useEffect(() => {
     getDBConnection()
       .then(cnx => initiateDB(cnx))

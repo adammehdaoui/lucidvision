@@ -1,12 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {StackNavigationProp} from '@react-navigation/stack';
 
-interface ActionsProps {
-  navigation: StackNavigationProp<any>; // Update this with your stack navigator type
-}
-
-function Actions({navigation}: ActionsProps) {
+function Actions({navigation}: any) {
   const navigateToDream = (isNightmare: boolean) => {
     navigation.navigate('Dream', {isNightmare});
   };

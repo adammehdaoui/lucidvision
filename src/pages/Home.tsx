@@ -1,14 +1,9 @@
 import React from 'react';
-import {View, StyleSheet, ImageBackground} from 'react-native';
+import {View, StyleSheet, ImageBackground, Button} from 'react-native';
 import Header from '../components/Header';
 import Actions from '../components/Actions';
-import {StackNavigationProp} from '@react-navigation/stack';
 
-interface HomeProps {
-  navigation: StackNavigationProp<any>; // Update this with your stack navigator type
-}
-
-function Home({navigation}: HomeProps) {
+function Home({navigation}: any) {
   return (
     <ImageBackground
       style={styles.backgroundImage}
@@ -17,6 +12,10 @@ function Home({navigation}: HomeProps) {
         <Header />
         <Actions navigation={navigation} />
         {/* <ActivityIndicator /> */}
+        <Button
+          title="Go to Details... again"
+          onPress={() => navigation.navigate('Dreams')}
+        />
       </View>
     </ImageBackground>
   );

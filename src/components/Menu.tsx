@@ -1,12 +1,12 @@
 import React from 'react';
 import {Text, StyleSheet} from 'react-native';
-import {Link} from 'react-router-native';
 
 function Menu() {
   return (
-    <Link to="/" style={styles.menuView}>
-      <Text style={styles.buttonStyle}>Accueil</Text>
-    </Link>
+    // <Link to="/" style={styles.menuView}>
+    //   <Text style={styles.buttonStyle}>Accueil</Text>
+    // </Link>
+    <Text>Salut</Text>
   );
 }
 
