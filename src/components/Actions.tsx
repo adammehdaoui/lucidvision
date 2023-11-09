@@ -1,33 +1,45 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {Link} from '@react-navigation/native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {StackNavigationProp} from '@react-navigation/stack';
 
-function Actions() {
+interface ActionsProps {
+  navigation: StackNavigationProp<any>; // Update this with your stack navigator type
+}
+
+function Actions({navigation}: ActionsProps) {
+  const navigateToDream = (isNightmare: boolean) => {
+    navigation.navigate('Dream', {isNightmare});
+  };
+
+  const navigateToDreams = (isNightmare: boolean) => {
+    navigation.navigate('Dreams', {isNightmare});
+  };
+
   return (
     <View>
-      <Link
-        to={{screen: 'Dream', params: {isNightmare: false}}}
+      <TouchableOpacity
+        onPress={() => navigateToDream(false)}
         style={styles.actionButton}>
         <Text style={styles.actionText}>Ajout d'un rêve</Text>
-      </Link>
+      </TouchableOpacity>
 
-      <Link
-        to={{screen: 'Dream', params: {isNightmare: true}}}
+      <TouchableOpacity
+        onPress={() => navigateToDream(true)}
         style={styles.actionButton}>
         <Text style={styles.actionText}>Ajout d'un cauchemar</Text>
-      </Link>
+      </TouchableOpacity>
 
-      <Link
-        to={{screen: 'Dreams', params: {isNightmare: false}}}
+      <TouchableOpacity
+        onPress={() => navigateToDreams(false)}
         style={styles.actionButton}>
         <Text style={styles.actionText}>Mes rêves</Text>
-      </Link>
+      </TouchableOpacity>
 
-      <Link
-        to={{screen: 'Dreams', params: {isNightmare: true}}}
+      <TouchableOpacity
+        onPress={() => navigateToDreams(true)}
         style={styles.actionButton}>
         <Text style={styles.actionText}>Mes cauchemars</Text>
-      </Link>
+      </TouchableOpacity>
     </View>
   );
 }

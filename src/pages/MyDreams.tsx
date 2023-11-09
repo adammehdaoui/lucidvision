@@ -7,16 +7,24 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import {useParams} from 'react-router-native';
 import {getDBConnection, getDreams, deleteDream} from '../data/db-service';
 import Dream from '../custom/Dream';
 import Menu from '../components/Menu';
 import Trash from '../components/Trash';
+import {StackNavigationProp} from '@react-navigation/stack';
+import RootStackParamList from '../custom/types';
+import {RouteProp} from '@react-navigation/native';
 
-function MyDreams({navigation}) {
+interface MyDreamsProps {
+  navigation: StackNavigationProp<RootStackParamList>; // Update with your actual types
+  route: RouteProp<RootStackParamList, 'Dreams'>; // Update with your actual types
+}
+
+const MyDreams: React.FC<MyDreamsProps> = ({navigation, route}) => {
   const [dreams, setDreams] = useState<Dream[]>([]);
-  const {isNightmare} = useParams();
-  const nightmare = isNightmare === '0' ? false : true;
+  // const {isNightmare} = useParams();
+  // const nightmare = isNightmare === '0' ? false : true;
+  const {nightmare} = route.params;
 
   const updateDreams = useCallback(
     function () {
@@ -72,7 +80,7 @@ function MyDreams({navigation}) {
       </View>
     </ImageBackground>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

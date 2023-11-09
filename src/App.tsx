@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import {NativeRouter, Routes, Route} from 'react-router-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from './pages/Home';
@@ -18,10 +17,10 @@ function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" Component={Home} />
-        <Stack.Screen name="Dream" Component={CreateDream} />
-        <Stack.Screen name="Dreams" Component={MyDreams} />
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Dream" component={CreateDream} />
+        <Stack.Screen name="Dreams" component={MyDreams} />
       </Stack.Navigator>
     </NavigationContainer>
   );
