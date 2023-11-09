@@ -9,16 +9,13 @@ import {
 } from 'react-native';
 import {getDBConnection, getDreams, deleteDream} from '../data/db-service';
 import Dream from '../custom/Dream';
-import Menu from '../components/Menu';
 import Trash from '../components/Trash';
 
-function MyDreams() {
+function MyDreams({route}: any) {
   const [dreams, setDreams] = useState<Dream[]>([]);
   // const {isNightmare} = useParams();
   // const nightmare = isNightmare === '0' ? false : true;
-  // const {nightmare} = route.params;
-
-  const nightmare = false;
+  const {nightmare} = route.params;
 
   const updateDreams = useCallback(
     function () {
@@ -46,7 +43,6 @@ function MyDreams() {
     <ImageBackground
       style={styles.backgroundImage}
       source={require('../assets/gradient.jpeg')}>
-      <Menu />
       <View>
         {dreams.length === 0 ? (
           <View style={styles.noDreamView}>

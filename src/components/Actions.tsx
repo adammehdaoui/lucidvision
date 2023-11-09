@@ -2,12 +2,12 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 function Actions({navigation}: any) {
-  const navigateToDream = (isNightmare: boolean) => {
-    navigation.navigate('Dream', {isNightmare});
+  const navigateToDream = (nightmare: boolean) => {
+    navigation.navigate('Dream', {nightmare});
   };
 
-  const navigateToDreams = (isNightmare: boolean) => {
-    navigation.navigate('Dreams', {isNightmare});
+  const navigateToDreams = (nightmare: boolean) => {
+    navigation.navigate('Dreams', {nightmare});
   };
 
   return (

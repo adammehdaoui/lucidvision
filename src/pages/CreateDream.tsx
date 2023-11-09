@@ -8,7 +8,6 @@ import {
   Text,
 } from 'react-native';
 import {getDBConnection, insertDream} from '../data/db-service';
-import Menu from '../components/Menu';
 
 function CreateDream({route, navigation}: any) {
   const [title, setTitle] = useState<string>('');
@@ -20,14 +19,13 @@ function CreateDream({route, navigation}: any) {
       .then(cnx => insertDream(cnx, title, description, nightmare))
       .catch(e => console.log(e));
 
-    navigation.navigate('Dreams', {isNightmare: nightmare});
+    navigation.navigate('Dreams', {nightmare: nightmare});
   }
 
   return (
     <ImageBackground
       style={styles.backgroundImage}
       source={require('../assets/gradient.jpeg')}>
-      <Menu />
       <SafeAreaView style={styles.mainView}>
         <TextInput
           enablesReturnKeyAutomatically

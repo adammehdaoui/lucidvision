@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, ImageBackground} from 'react-native';
+import Header from '../components/Header';
 import Actions from '../components/Actions';
 
 function Home({navigation}: any) {
@@ -8,6 +9,7 @@ function Home({navigation}: any) {
       style={styles.backgroundImage}
       source={require('../assets/gradient.jpeg')}>
       <View>
+        <Header />
         <Actions navigation={navigation} />
         {/* <ActivityIndicator /> */}
       </View>
