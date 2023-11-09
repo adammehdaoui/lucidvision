@@ -1,6 +1,5 @@
 import React from 'react';
-import {View, StyleSheet, ImageBackground, Button} from 'react-native';
-import Header from '../components/Header';
+import {View, StyleSheet, ImageBackground} from 'react-native';
 import Actions from '../components/Actions';
 
 function Home({navigation}: any) {
@@ -9,13 +8,8 @@ function Home({navigation}: any) {
       style={styles.backgroundImage}
       source={require('../assets/gradient.jpeg')}>
       <View>
-        <Header />
         <Actions navigation={navigation} />
         {/* <ActivityIndicator /> */}
-        <Button
-          title="Go to Details... again"
-          onPress={() => navigation.navigate('Dreams')}
-        />
       </View>
     </ImageBackground>
   );
