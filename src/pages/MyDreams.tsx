@@ -39,6 +39,12 @@ function MyDreams({route}: any) {
     [updateDreams],
   );
 
+  function dateUSToLocaleDate(date: string): string {
+    const dateToConvert = new Date(date);
+    const dateString = dateToConvert.toLocaleDateString();
+    return dateString;
+  }
+
   return (
     <ImageBackground
       style={styles.backgroundImage}
@@ -56,7 +62,7 @@ function MyDreams({route}: any) {
               {dreams.map((dream: Dream) => (
                 <View key={dream.ID} style={styles.dreamView}>
                   <Text>Type : {dream.ISNIGHTMARE ? 'Cauchemar' : 'Rêve'}</Text>
-                  <Text>Date : {Date.parse(dream.DATE)}</Text>
+                  <Text>Date : {dateUSToLocaleDate(dream.DATE)}</Text>
                   <Text>Titre : {dream.TITLE}</Text>
                   <Text>Description : {dream.DESC}</Text>
                   <TouchableOpacity onPress={() => handleDelete(dream.ID)}>
