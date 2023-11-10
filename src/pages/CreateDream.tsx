@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {
   StyleSheet,
   ImageBackground,
@@ -14,13 +14,16 @@ function CreateDream({route, navigation}: any) {
   const [description, setDescription] = useState<string>('');
   const {nightmare} = route.params;
 
-  function handleAdd() {
-    getDBConnection()
-      .then(cnx => insertDream(cnx, title, description, nightmare))
-      .catch(e => console.log(e));
+  const handleAdd = useCallback(
+    function () {
+      getDBConnection()
+        .then(cnx => insertDream(cnx, title, description, nightmare))
+        .catch(e => console.log(e));
 
-    navigation.navigate('Dreams', {nightmare: nightmare});
-  }
+      navigation.navigate('Dreams', {nightmare: nightmare});
+    },
+    [title, description, nightmare, navigation],
+  );
 
   return (
     <ImageBackground
