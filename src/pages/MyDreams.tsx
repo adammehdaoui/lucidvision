@@ -13,8 +13,6 @@ import Trash from '../components/Trash';
 
 function MyDreams({route}: any) {
   const [dreams, setDreams] = useState<Dream[]>([]);
-  // const {isNightmare} = useParams();
-  // const nightmare = isNightmare === '0' ? false : true;
   const {nightmare} = route.params;
 
   const updateDreams = useCallback(
@@ -31,13 +29,15 @@ function MyDreams({route}: any) {
     updateDreams();
   }, [updateDreams]);
 
-  function handleDelete(id: number) {
-    getDBConnection()
-      .then(cnx => deleteDream(cnx, id))
-      .catch(e => console.log(e));
-
-    updateDreams();
-  }
+  const handleDelete = useCallback(
+    function (id: number) {
+      getDBConnection()
+        .then(cnx => deleteDream(cnx, id))
+        .catch(e => console.log(e));
+      updateDreams();
+    },
+    [updateDreams],
+  );
 
   return (
     <ImageBackground
@@ -56,7 +56,7 @@ function MyDreams({route}: any) {
               {dreams.map((dream: Dream) => (
                 <View key={dream.ID} style={styles.dreamView}>
                   <Text>Type : {dream.ISNIGHTMARE ? 'Cauchemar' : 'Rêve'}</Text>
-                  <Text>Date : {dream.CREATIONDATE}</Text>
+                  <Text>Date : {Date.parse(dream.DATE)}</Text>
                   <Text>Titre : {dream.TITLE}</Text>
                   <Text>Description : {dream.DESC}</Text>
                   <TouchableOpacity onPress={() => handleDelete(dream.ID)}>
