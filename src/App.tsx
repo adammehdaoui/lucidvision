@@ -19,8 +19,16 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Dream" component={CreateDream} />
-        <Stack.Screen name="Dreams" component={MyDreams} />
+        <Stack.Screen
+          name="Dream"
+          component={CreateDream}
+          options={{title: 'Create a dream'}}
+        />
+        <Stack.Screen
+          name="Dreams"
+          component={MyDreams}
+          options={{title: 'My dreams'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
