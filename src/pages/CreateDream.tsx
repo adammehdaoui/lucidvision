@@ -1,5 +1,6 @@
 import React, {useState, useCallback} from 'react';
 import {
+  View,
   StyleSheet,
   ImageBackground,
   SafeAreaView,
@@ -9,6 +10,7 @@ import {
   useColorScheme,
 } from 'react-native';
 import {getDBConnection, insertDream} from '../data/db-service';
+import Theme from '../components/Theme';
 
 function CreateDream({route, navigation}: any) {
   const theme = useColorScheme();
@@ -58,6 +60,9 @@ function CreateDream({route, navigation}: any) {
           <Text style={styles.buttonText}>Add</Text>
         </TouchableOpacity>
       </SafeAreaView>
+      <View style={styles.modePlacement}>
+        <Theme />
+      </View>
     </ImageBackground>
   );
 }
@@ -105,6 +110,9 @@ const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
     resizeMode: 'stretch',
+  },
+  modePlacement: {
+    marginTop: 265,
   },
 });
 
