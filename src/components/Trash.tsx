@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
   placement: {
     marginTop: 10,
     marginLeft: '40%',
+    color: 'gray',
   },
 });
 

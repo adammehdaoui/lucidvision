@@ -48,12 +48,13 @@ function MyDreams({route}: any) {
   return (
     <ImageBackground
       style={styles.backgroundImage}
-      source={require('../assets/gradient.jpeg')}>
+      source={require('../assets/gradient.png')}>
       <View>
         {dreams.length === 0 ? (
           <View style={styles.noDreamView}>
             <Text style={styles.noDreamText}>
-              Vous n'avez enregistré aucun rêve.
+              Vous n'avez enregistré aucun{' '}
+              {nightmare === true ? 'cauchemar' : 'rêve'}
             </Text>
           </View>
         ) : (
@@ -88,12 +89,12 @@ const styles = StyleSheet.create({
   noDreamView: {
     padding: 10,
     marginTop: 40,
-    marginLeft: '15%',
-    width: '75%',
-    backgroundColor: '#ebf2ff',
+    marginLeft: '10%',
+    width: '80%',
+    backgroundColor: '#ffffff',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: '#d3d3d3',
   },
   noDreamText: {
     justifyContent: 'center',
@@ -102,10 +103,10 @@ const styles = StyleSheet.create({
   dreamView: {
     padding: 10,
     marginTop: 20,
-    backgroundColor: '#ebf2ff',
+    backgroundColor: '#ffffff',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: '#d3d3d3',
   },
   textView: {
     fontSize: 18,

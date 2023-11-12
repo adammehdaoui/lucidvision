@@ -28,7 +28,7 @@ function CreateDream({route, navigation}: any) {
   return (
     <ImageBackground
       style={styles.backgroundImage}
-      source={require('../assets/gradient.jpeg')}>
+      source={require('../assets/gradient.png')}>
       <SafeAreaView style={styles.mainView}>
         <TextInput
           enablesReturnKeyAutomatically
@@ -64,10 +64,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 20,
     marginTop: 20,
-    backgroundColor: '#ebf2ff',
+    backgroundColor: '#ffffff',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: '#d3d3d3',
     width: '50%',
   },
   descView: {
@@ -75,18 +75,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 75,
     marginTop: 20,
-    backgroundColor: '#ebf2ff',
+    backgroundColor: '#ffffff',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: '#d3d3d3',
     width: '90%',
   },
   button: {
     marginTop: 20,
-    backgroundColor: '#ebf2ff',
+    backgroundColor: '#ffffff',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: '#d3d3d3',
     width: '65%',
     padding: 20,
   },

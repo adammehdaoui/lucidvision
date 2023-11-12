@@ -11,7 +11,7 @@ function Actions({navigation}: any) {
   };
 
   return (
-    <View>
+    <View style={styles.actionView}>
       <TouchableOpacity
         onPress={() => navigateToDream(false)}
         style={styles.actionButton}>
@@ -40,11 +40,14 @@ function Actions({navigation}: any) {
 }
 
 const styles = StyleSheet.create({
+  actionView: {
+    marginTop: 10,
+  },
   actionButton: {
-    backgroundColor: '#ebf2ff',
+    backgroundColor: '#ffffff',
     borderRadius: 10,
     borderWidth: 1,
-    borderColor: 'gray',
+    borderColor: '#d3d3d3',
     width: '65%',
     marginLeft: '18%',
     marginBottom: '5%',

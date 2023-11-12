@@ -7,7 +7,7 @@ function Home({navigation}: any) {
   return (
     <ImageBackground
       style={styles.backgroundImage}
-      source={require('../assets/gradient.jpeg')}>
+      source={require('../assets/gradient.png')}>
       <View>
         <Header />
         <Actions navigation={navigation} />

@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 function Header() {
   return (
@@ -15,11 +14,10 @@ const styles = StyleSheet.create({
     padding: 50,
   },
   headerText: {
-    marginTop: hp('6%'),
     color: 'white',
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: 40,
+    fontSize: 45,
     fontVariant: ['small-caps'],
   },
 });

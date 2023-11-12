@@ -23,6 +23,7 @@
     "react-native-svg": "^13.14.0",
     "react-native-svg-transformer": "^1.1.0",
     "react-native-transition": "^1.1.8",
+    "react-native-video": "^5.2.1",
     "react-router-native": "^6.17.0"
   },
   "devDependencies": {
