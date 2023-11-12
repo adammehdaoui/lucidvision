@@ -6,10 +6,12 @@ import {
   TextInput,
   TouchableOpacity,
   Text,
+  useColorScheme,
 } from 'react-native';
 import {getDBConnection, insertDream} from '../data/db-service';
 
 function CreateDream({route, navigation}: any) {
+  const theme = useColorScheme();
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const {nightmare} = route.params;
@@ -28,13 +30,18 @@ function CreateDream({route, navigation}: any) {
   return (
     <ImageBackground
       style={styles.backgroundImage}
-      source={require('../assets/gradient.png')}>
+      source={
+        theme === 'dark'
+          ? require('../assets/gradient-dark.png')
+          : require('../assets/gradient.png')
+      }>
       <SafeAreaView style={styles.mainView}>
         <TextInput
           enablesReturnKeyAutomatically
           onChangeText={text => setTitle(text)}
           value={title}
-          placeholder="Titre"
+          placeholder="Title"
+          placeholderTextColor={'gray'}
           style={styles.titleView}
         />
         <TextInput
@@ -44,10 +51,11 @@ function CreateDream({route, navigation}: any) {
           onChangeText={text => setDescription(text)}
           value={description}
           placeholder="Description"
+          placeholderTextColor={'gray'}
           style={styles.descView}
         />
         <TouchableOpacity style={styles.button} onPress={handleAdd}>
-          <Text style={styles.buttonText}>Ajouter</Text>
+          <Text style={styles.buttonText}>Add</Text>
         </TouchableOpacity>
       </SafeAreaView>
     </ImageBackground>
@@ -64,7 +72,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 20,
     marginTop: 20,
-    backgroundColor: '#ffffff',
+    backgroundColor: 'white',
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#d3d3d3',

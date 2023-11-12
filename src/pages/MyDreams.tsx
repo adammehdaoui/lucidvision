@@ -6,12 +6,14 @@ import {
   StyleSheet,
   ImageBackground,
   TouchableOpacity,
+  useColorScheme,
 } from 'react-native';
 import {getDBConnection, getDreams, deleteDream} from '../data/db-service';
 import Dream from '../custom/Dream';
 import Trash from '../components/Trash';
 
 function MyDreams({route}: any) {
+  const theme = useColorScheme();
   const [dreams, setDreams] = useState<Dream[]>([]);
   const {nightmare} = route.params;
 
@@ -48,13 +50,16 @@ function MyDreams({route}: any) {
   return (
     <ImageBackground
       style={styles.backgroundImage}
-      source={require('../assets/gradient.png')}>
+      source={
+        theme === 'dark'
+          ? require('../assets/gradient-dark.png')
+          : require('../assets/gradient.png')
+      }>
       <View>
         {dreams.length === 0 ? (
           <View style={styles.noDreamView}>
             <Text style={styles.noDreamText}>
-              Vous n'avez enregistré aucun{' '}
-              {nightmare === true ? 'cauchemar' : 'rêve'}
+              You didn't save any {nightmare === true ? 'nightmare' : 'dream'}
             </Text>
           </View>
         ) : (
@@ -64,7 +69,7 @@ function MyDreams({route}: any) {
                 <View key={dream.ID} style={styles.dreamView}>
                   <Text>Type : {dream.ISNIGHTMARE ? 'Cauchemar' : 'Rêve'}</Text>
                   <Text>Date : {dateUSToLocaleDate(dream.DATE)}</Text>
-                  <Text>Titre : {dream.TITLE}</Text>
+                  <Text>Title : {dream.TITLE}</Text>
                   <Text>Description : {dream.DESC}</Text>
                   <TouchableOpacity onPress={() => handleDelete(dream.ID)}>
                     <Trash />
@@ -99,6 +104,7 @@ const styles = StyleSheet.create({
   noDreamText: {
     justifyContent: 'center',
     textAlign: 'center',
+    color: 'gray',
   },
   dreamView: {
     padding: 10,

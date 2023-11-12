@@ -15,25 +15,25 @@ function Actions({navigation}: any) {
       <TouchableOpacity
         onPress={() => navigateToDream(false)}
         style={styles.actionButton}>
-        <Text style={styles.actionText}>Ajout d'un rêve</Text>
+        <Text style={styles.actionText}>Add a dream</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         onPress={() => navigateToDream(true)}
         style={styles.actionButton}>
-        <Text style={styles.actionText}>Ajout d'un cauchemar</Text>
+        <Text style={styles.actionText}>Add a nightmare</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         onPress={() => navigateToDreams(false)}
         style={styles.actionButton}>
-        <Text style={styles.actionText}>Mes rêves</Text>
+        <Text style={styles.actionText}>My dreams</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         onPress={() => navigateToDreams(true)}
         style={styles.actionButton}>
-        <Text style={styles.actionText}>Mes cauchemars</Text>
+        <Text style={styles.actionText}>My nightmares</Text>
       </TouchableOpacity>
     </View>
   );
