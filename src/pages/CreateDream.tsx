@@ -38,6 +38,9 @@ function CreateDream({route, navigation}: any) {
           : require('../assets/gradient.png')
       }>
       <SafeAreaView style={styles.mainView}>
+        <View style={styles.modePlacement}>
+          <Theme />
+        </View>
         <TextInput
           enablesReturnKeyAutomatically
           onChangeText={text => setTitle(text)}
@@ -60,9 +63,6 @@ function CreateDream({route, navigation}: any) {
           <Text style={styles.buttonText}>Add</Text>
         </TouchableOpacity>
       </SafeAreaView>
-      <View style={styles.modePlacement}>
-        <Theme />
-      </View>
     </ImageBackground>
   );
 }

@@ -11,7 +11,7 @@ function Header() {
 
 const styles = StyleSheet.create({
   headerView: {
-    padding: 50,
+    padding: 30,
   },
   headerText: {
     color: 'white',
