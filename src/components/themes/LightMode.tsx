@@ -8,7 +8,7 @@ function LightMode() {
 
 const styles = StyleSheet.create({
   svgColor: {
-    color: 'gray',
+    color: 'black',
   },
 });
 

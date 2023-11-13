@@ -37,10 +37,10 @@ function CreateDream({route, navigation}: any) {
           ? require('../assets/gradient-dark.png')
           : require('../assets/gradient.png')
       }>
+      <View style={styles.modePlacement}>
+        <Theme />
+      </View>
       <SafeAreaView style={styles.mainView}>
-        <View style={styles.modePlacement}>
-          <Theme />
-        </View>
         <TextInput
           enablesReturnKeyAutomatically
           onChangeText={text => setTitle(text)}
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     resizeMode: 'stretch',
   },
   modePlacement: {
-    marginTop: 265,
+    marginTop: 25,
   },
 });
 
