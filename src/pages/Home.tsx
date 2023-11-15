@@ -4,21 +4,18 @@ import {
   View,
   StyleSheet,
   ImageBackground,
-  useColorScheme,
 } from 'react-native';
 import Header from '../components/Header';
 import Actions from '../components/Actions';
 import Theme from '../components/Theme';
 
-function Home({navigation}: any) {
-  const theme = useColorScheme();
-
+function Home({navigation, theme}: {navigation: any; theme: any}) {
   const [indicatorAnimating, setIndicator] = useState(true);
 
   useEffect(() => {
     const timeoutID = setTimeout(() => {
       setIndicator(false);
-    }, 3000);
+    }, 1000);
 
     return () => clearTimeout(timeoutID);
   });

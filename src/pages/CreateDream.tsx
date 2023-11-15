@@ -1,19 +1,23 @@
 import React, {useState, useCallback} from 'react';
 import {
-  View,
   StyleSheet,
   ImageBackground,
   SafeAreaView,
   TextInput,
   TouchableOpacity,
   Text,
-  useColorScheme,
 } from 'react-native';
 import {getDBConnection, insertDream} from '../data/db-service';
-import Theme from '../components/Theme';
 
-function CreateDream({route, navigation}: any) {
-  const theme = useColorScheme();
+function CreateDream({
+  route,
+  navigation,
+  backgroundImage,
+}: {
+  route: any;
+  navigation: any;
+  backgroundImage: any;
+}) {
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const {nightmare} = route.params;
@@ -30,16 +34,7 @@ function CreateDream({route, navigation}: any) {
   );
 
   return (
-    <ImageBackground
-      style={styles.backgroundImage}
-      source={
-        theme === 'dark'
-          ? require('../assets/gradient-dark.png')
-          : require('../assets/gradient.png')
-      }>
-      <View style={styles.modePlacement}>
-        <Theme />
-      </View>
+    <ImageBackground style={styles.backgroundImage} source={backgroundImage}>
       <SafeAreaView style={styles.mainView}>
         <TextInput
           enablesReturnKeyAutomatically
