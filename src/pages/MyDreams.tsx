@@ -6,18 +6,14 @@ import {
   StyleSheet,
   ImageBackground,
   TouchableOpacity,
+  useColorScheme,
 } from 'react-native';
 import {getDBConnection, getDreams, deleteDream} from '../data/db-service';
 import Dream from '../custom/Dream';
 import Trash from '../components/Trash';
 
-function MyDreams({
-  route,
-  backgroundImage,
-}: {
-  route: any;
-  backgroundImage: any;
-}) {
+function MyDreams({route}: any) {
+  const theme = useColorScheme();
   const [dreams, setDreams] = useState<Dream[]>([]);
   const {nightmare} = route.params;
 
@@ -52,7 +48,13 @@ function MyDreams({
   }
 
   return (
-    <ImageBackground style={styles.backgroundImage} source={backgroundImage}>
+    <ImageBackground
+      style={styles.backgroundImage}
+      source={
+        theme === 'dark'
+          ? require('../assets/gradient-dark.png')
+          : require('../assets/gradient.png')
+      }>
       <View>
         {dreams.length === 0 ? (
           <View style={styles.noDreamView}>
