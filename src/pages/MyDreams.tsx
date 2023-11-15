@@ -11,6 +11,7 @@ import {
 import {getDBConnection, getDreams, deleteDream} from '../data/db-service';
 import Dream from '../custom/Dream';
 import Trash from '../components/Trash';
+import Edit from '../components/Edit';
 
 function MyDreams({route}: any) {
   const theme = useColorScheme();
@@ -40,6 +41,8 @@ function MyDreams({route}: any) {
     },
     [updateDreams],
   );
+
+  const handleUpdate = () => {};
 
   function dateUSToLocaleDate(date: string): string {
     const dateToConvert = new Date(date);
@@ -71,9 +74,18 @@ function MyDreams({route}: any) {
                   <Text>Date : {dateUSToLocaleDate(dream.DATE)}</Text>
                   <Text>Title : {dream.TITLE}</Text>
                   <Text>Description : {dream.DESC}</Text>
-                  <TouchableOpacity onPress={() => handleDelete(dream.ID)}>
-                    <Trash />
-                  </TouchableOpacity>
+                  <View style={styles.buttonContainer}>
+                    <TouchableOpacity
+                      onPress={() => handleDelete(dream.ID)}
+                      style={styles.buttonPlacement}>
+                      <Trash />
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => handleUpdate()}
+                      style={styles.buttonPlacement}>
+                      <Edit />
+                    </TouchableOpacity>
+                  </View>
                 </View>
               ))}
             </View>
@@ -87,6 +99,15 @@ function MyDreams({route}: any) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 10,
+  },
+  buttonPlacement: {
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   mainView: {
     padding: 30,

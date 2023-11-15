@@ -1,6 +1,5 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import {
-  View,
   StyleSheet,
   ImageBackground,
   SafeAreaView,
@@ -11,7 +10,6 @@ import {
   Image,
 } from 'react-native';
 import {getDBConnection, insertDream} from '../data/db-service';
-import Theme from '../components/Theme';
 
 function CreateDream({route, navigation}: any) {
   const theme = useColorScheme();
@@ -35,18 +33,17 @@ function CreateDream({route, navigation}: any) {
   );
 
   useEffect(() => {
-    async function preloadImage() {
-      await Image.prefetch(backgroundImage.uri);
+    if (backgroundImage && backgroundImage.uri) {
+      async function preloadImage() {
+        await Image.prefetch(backgroundImage.uri);
+      }
+
+      preloadImage();
     }
-    preloadImage();
-    console.log(backgroundImage);
   }, [backgroundImage]);
 
   return (
     <ImageBackground style={styles.backgroundImage} source={backgroundImage}>
-      <View style={styles.modePlacement}>
-        <Theme />
-      </View>
       <SafeAreaView style={styles.mainView}>
         <TextInput
           enablesReturnKeyAutomatically
