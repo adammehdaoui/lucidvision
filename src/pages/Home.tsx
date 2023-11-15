@@ -18,9 +18,7 @@ function Home({navigation}: any) {
   useEffect(() => {
     const timeoutID = setTimeout(() => {
       setIndicator(false);
-
-      console.log(indicatorAnimating);
-    }, 1000);
+    }, 3000);
 
     return () => clearTimeout(timeoutID);
   });
@@ -53,7 +51,7 @@ const styles = StyleSheet.create({
     resizeMode: 'stretch',
   },
   indicatorPlacement: {
-    marginTop: 20,
+    marginTop: 30,
   },
   modePlacement: {
     marginTop: 25,
