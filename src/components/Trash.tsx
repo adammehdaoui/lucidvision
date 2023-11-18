@@ -8,7 +8,6 @@ function Trash() {
 
 const styles = StyleSheet.create({
   svg: {
-    marginLeft: '5%',
     color: 'gray',
   },
 });

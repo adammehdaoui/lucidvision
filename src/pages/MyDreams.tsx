@@ -13,7 +13,7 @@ import Dream from '../custom/Dream';
 import Trash from '../components/Trash';
 import Edit from '../components/Edit';
 
-function MyDreams({route}: any) {
+function MyDreams({route, navigation}: any) {
   const theme = useColorScheme();
   const [dreams, setDreams] = useState<Dream[]>([]);
   const {nightmare} = route.params;
@@ -42,7 +42,9 @@ function MyDreams({route}: any) {
     [updateDreams],
   );
 
-  const handleUpdate = () => {};
+  const handleUpdate = (id: number) => {
+    navigation.navigate('UpdateDream', {id});
+  };
 
   function dateUSToLocaleDate(date: string): string {
     const dateToConvert = new Date(date);
@@ -81,7 +83,7 @@ function MyDreams({route}: any) {
                       <Trash />
                     </TouchableOpacity>
                     <TouchableOpacity
-                      onPress={() => handleUpdate()}
+                      onPress={() => handleUpdate(dream.ID)}
                       style={styles.buttonPlacement}>
                       <Edit />
                     </TouchableOpacity>
