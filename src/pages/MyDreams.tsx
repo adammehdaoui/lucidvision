@@ -42,8 +42,8 @@ function MyDreams({route, navigation}: any) {
     [updateDreams],
   );
 
-  const handleUpdate = (id: number) => {
-    navigation.navigate('UpdateDream', {id});
+  const handleUpdate = (dreamID: number) => {
+    navigation.navigate('UpdateDream', {dreamID});
   };
 
   function dateUSToLocaleDate(date: string): string {

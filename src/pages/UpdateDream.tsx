@@ -5,15 +5,11 @@ import {getDBConnection, getDreamByID} from '../data/db-service';
 
 function UpdateDream({route}: any) {
   const {dreamID} = route.params;
+  console.log('dreamID', dreamID);
 
-  const dream: Promise<Dream> = getDBConnection()
+  const dream: Dream = getDBConnection()
     .then(cnx => getDreamByID(cnx, dreamID))
     .then(res => {
-      if (Array.isArray(res)) {
-        throw new Error(
-          'Invalid response: expected a dream, got an array of multiple dreams',
-        );
-      }
       return res;
     })
     .catch(error => {
