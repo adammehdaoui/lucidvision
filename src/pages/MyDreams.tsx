@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useCallback} from 'react';
 import {
   View,
   ScrollView,
@@ -28,9 +28,7 @@ function MyDreams({route, navigation}: any) {
     [nightmare],
   );
 
-  useEffect(() => {
-    updateDreams();
-  }, [updateDreams]);
+  updateDreams();
 
   const handleDelete = useCallback(
     function (id: number) {
@@ -42,8 +40,8 @@ function MyDreams({route, navigation}: any) {
     [updateDreams],
   );
 
-  const handleUpdate = (dreamID: number) => {
-    navigation.navigate('UpdateDream', {dreamID});
+  const handleUpdate = (dreamID: number, isNightmare: boolean) => {
+    navigation.navigate('UpdateDream', {dreamID, isNightmare});
   };
 
   function dateUSToLocaleDate(date: string): string {
@@ -83,7 +81,7 @@ function MyDreams({route, navigation}: any) {
                       <Trash />
                     </TouchableOpacity>
                     <TouchableOpacity
-                      onPress={() => handleUpdate(dream.ID)}
+                      onPress={() => handleUpdate(dream.ID, dream.ISNIGHTMARE)}
                       style={styles.buttonPlacement}>
                       <Edit />
                     </TouchableOpacity>

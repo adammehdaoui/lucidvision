@@ -8,9 +8,9 @@ import {
   TouchableOpacity,
   useColorScheme,
 } from 'react-native';
-import {getDBConnection, getDreamByID} from '../data/db-service';
+import {getDBConnection, getDreamByID, updateDream} from '../data/db-service';
 
-function UpdateDream({route}: any) {
+function UpdateDream({route, navigation}: any) {
   const theme = useColorScheme();
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
@@ -18,7 +18,8 @@ function UpdateDream({route}: any) {
     theme === 'dark'
       ? require('../assets/gradient-dark.png')
       : require('../assets/gradient.png');
-  const {dreamID} = route.params;
+  const {dreamID, isNightmare} = route.params;
+  const nightmare = isNightmare; // to keep same name of object (navigate to MyDreams component)
 
   const fetchDream = useCallback(async () => {
     getDBConnection()
@@ -33,7 +34,15 @@ function UpdateDream({route}: any) {
       });
   }, [dreamID]);
 
-  function handleUpdate() {}
+  function handleUpdate() {
+    getDBConnection()
+      .then(cnx => updateDream(cnx, dreamID, title, description))
+      .catch(error => {
+        console.log(error);
+      });
+
+    navigation.navigate('Dreams', {nightmare});
+  }
 
   useEffect(() => {
     fetchDream();

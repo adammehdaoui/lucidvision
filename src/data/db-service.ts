@@ -54,7 +54,7 @@ export const updateDream = async (
   title: string,
   description: string,
 ) => {
-  const query = `UPDATE DREAMS SET TITLE = '${title}', DESCRIPTION = '${description}' WHERE ID = ${id}`;
+  const query = `UPDATE DREAMS SET TITLE = '${title}', DESC = '${description}' WHERE ID = ${id}`;
   await db.executeSql(query, [id, title, description]);
 };
 
