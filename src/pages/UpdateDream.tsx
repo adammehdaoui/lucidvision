@@ -1,12 +1,13 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import {
+  Text,
   ImageBackground,
   SafeAreaView,
   TextInput,
   StyleSheet,
+  TouchableOpacity,
   useColorScheme,
 } from 'react-native';
-import Dream from '../custom/Dream';
 import {getDBConnection, getDreamByID} from '../data/db-service';
 
 function UpdateDream({route}: any) {
@@ -31,6 +32,8 @@ function UpdateDream({route}: any) {
         throw error;
       });
   }, [dreamID]);
+
+  function handleUpdate() {}
 
   useEffect(() => {
     fetchDream();
@@ -57,6 +60,9 @@ function UpdateDream({route}: any) {
           placeholderTextColor={'gray'}
           style={styles.descView}
         />
+        <TouchableOpacity style={styles.button} onPress={handleUpdate}>
+          <Text style={styles.buttonText}>Update</Text>
+        </TouchableOpacity>
       </SafeAreaView>
     </ImageBackground>
   );
